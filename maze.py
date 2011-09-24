@@ -61,16 +61,19 @@ def show_maze(maze):
     lastline.append('+')
     print ''.join(lastline)
 
+    print ''
+
 def move(maze, x, y, stack, xoff, yoff, direction):
     if y + yoff < 0:
         return
     if x + xoff < 0:
         return
-    if y + yoff > len(maze[x]):
+    if y + yoff >= len(maze[x]):
         return
-    if x + xoff > len(maze):
+    if x + xoff >= len(maze):
         return
 
+    current = maze[x][y]
     neighbour = maze[x + xoff][y + yoff]
     if neighbour[4]: # already visited?
         return
