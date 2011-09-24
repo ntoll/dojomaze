@@ -14,10 +14,10 @@ def make_maze(width=10, height=10, random_maze=False):
                 bottom = random.randrange(0,2) == 0
                 left = random.randrange(0,2) == 0
                 visited = random.randrange(0,2) == 0
-                newNode = (top, right, bottom, left, visited)
+                newNode = [top, right, bottom, left, visited]
             else:
                 # top, right, bottom, left, visited flags
-                newNode = (False, False, False, False, False)
+                newNode = [False, False, False, False, False]
             column.append(newNode)
     return maze
 
@@ -88,7 +88,7 @@ def visit(maze, x, y, stack):
     current[4] = True # now visited
 
     possibles_to_visit = [1, 2, 3, 4]
-    possibles_to_visit.shuffle()
+    random.shuffle(possibles_to_visit)
 
     for direction in possibles_to_visit:
         if direction == 1:
